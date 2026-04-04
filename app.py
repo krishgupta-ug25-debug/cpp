@@ -2,6 +2,7 @@ from flask import Flask,render_template,jsonify,request,redirect,flash,url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pytz
+import os
 ist=pytz.timezone("Asia/Kolkata")
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///student.db"
@@ -72,5 +73,6 @@ def delete(ID):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    port=int(os.environ.get("PORT",5000))
+    app.run(host="0.0.0.0",port=port)
 
