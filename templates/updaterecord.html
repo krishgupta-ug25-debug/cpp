@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form action="/UPDATE/{{student.id}}" method="post">
+        <div class="form-row">  
+            <div class="col">
+                <input type="text" class="form-control add" name="name" value="{{student.name}}" >
+            </div>
+            <div class="col">
+                <input type="text" class="form-control add" name="age" value="{{student.age}}" >
+            </div>
+            <div class="col">
+                <input type="text" class="form-control add" name="marks" value="{{student.marks}}" >
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info add">UPDATE RECORD</button>
+    </form>
+    <style>
+    .add{
+        margin: 10px;
+
+    }
+    .nav-link {
+    transition: 0.3s;
+    }
+
+    .nav-link:hover {
+    color: #facc15 !important;
+    }
+</style>
+{% endblock body %}

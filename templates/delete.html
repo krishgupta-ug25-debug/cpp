@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if not student %}
+    <div class="alert alert-primary" role="alert">
+        NO RECORDS FOUND. ADD YOUR FIRST RECORD
+    </div>
+  {% else %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">AGE</th>
+      <th scope="col">MARKS</th>
+      <th scope="col">DATE</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in student %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{i.name}}</td>
+      <td>{{i.age}}</td>
+      <td>{{i.marks}}</td>
+      <td>{{i.date_created.strftime('%d-%m-%Y %H:%M')}}</td>
+      <td><a href="/DELETE/{{i.id}}" type="button" class="btn btn-outline-danger">Delete Record</button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+</body>
+<style>
+    .nav-link {
+    transition: 0.3s;
+}
+.nav-link:hover {
+    color: #facc15 !important;
+}
+</style>
+</html>
+{% endblock body %}

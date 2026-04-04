@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% with messages=get_flashed_messages()%}
+        {% if messages %}
+            <div class="alert alert-success" role="alert">
+                {{messages[0]}}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <form action="/ADD" method="post">
+        <div class="form-row">  
+            <div class="col">
+                <input type="text" class="form-control add" name="name" placeholder="NAME">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control add" name="age" placeholder="AGE">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control add" name="marks" placeholder="MARKS">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info add">ADD RECORD</button>
+    </form>
+<style>
+    .add{
+        margin: 10px;
+
+    }
+    .nav-link {
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #facc15 !important;
+}
+</style>
+<script>
+    setTimeout(() => {
+    const alert=document.querySelector(".alert");
+        if (alert) alert.style.display="none"; 
+    }, 3000);
+</script>
+</html>
+{% endblock body %}
