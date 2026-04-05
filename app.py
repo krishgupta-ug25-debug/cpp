@@ -42,6 +42,19 @@ def read1():
     k=Students.query.all()
     print(k)
     return render_template("read.html",student=k)
+@app.route("/api/students")
+def get_students():
+    k=Students.query.all()
+    data=[]
+    for i in k:
+        data.append({
+            "ID":i.id,
+            "NAME":i.name,
+            "AGE":i.age,
+            "MARKS":i.marks,
+            "DATE":i.date_created
+        })
+    return jsonify(data)
 @app.route("/UPDATE")
 def read2():
     k=Students.query.all()
